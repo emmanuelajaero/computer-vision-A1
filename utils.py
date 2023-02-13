@@ -100,8 +100,9 @@ def partial_y(img):
     out = None
 
     ### YOUR CODE HERE
-
     # define your derivative filter to be size 3*3
+    filter = np.array([[-1, -1, -1], [0, 0, 0], [1, 1, 1]])
+    out = filter2d(img, filter)
 
     ### END YOUR CODE
 
