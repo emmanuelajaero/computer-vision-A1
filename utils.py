@@ -64,9 +64,7 @@ def filter2d(image, filter):
     image = zero_pad(image, Hk // 2, Wk // 2)
     for m in range(Hi):
         for n in range(Wi):
-            ### YOUR CODE HERE (replace ??? with your code)
             out[m, n] = np.sum(image[m : m + Hk, n : n + Wk] * filter)
-            ### END YOUR CODE
 
     return out
 
