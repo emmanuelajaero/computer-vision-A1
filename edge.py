@@ -20,8 +20,38 @@ def main():
     gradient = x_derivative + y_derivative
 
     # Visualize results
-    fig, ax = plt.subplots()
-    ax.imshow(x_derivative, cmap="gray")
+    # fig, ax = plt.subplots()
+    # ax.imshow(x_derivative, cmap="gray")
+    # plt.show()
+
+    rows = 3
+    columns = 1
+
+    fig = plt.figure(figsize=(10, 10))
+
+    # Adds x derivative to subplot
+    fig.add_subplot(rows, columns, 1)
+
+    plt.imshow(x_derivative, cmap="gray")
+    plt.axis("off")
+    plt.title("x derivative")
+
+    # Adds y derivative to subplot
+    fig.add_subplot(rows, columns, 2)
+
+    # showing image
+    plt.imshow(y_derivative, cmap="gray")
+    plt.axis("off")
+    plt.title("y derivative")
+
+    # Adds Gradient Magnitude to subplot
+    fig.add_subplot(rows, columns, 3)
+
+    # showing image
+    plt.imshow(gradient, cmap="gray")
+    plt.axis("off")
+    plt.title("Gradient Magnitude")
+
     plt.show()
 
 
