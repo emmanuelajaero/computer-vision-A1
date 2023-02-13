@@ -1,13 +1,15 @@
 import numpy as np
 
-def gaussian_kernel(l=5, sig=1.):
+
+def gaussian_kernel(l=5, sig=1.0):
     """
     creates gaussian kernel with side length `l` and a sigma of `sig`
     """
-    ax = np.linspace(-(l - 1) / 2., (l - 1) / 2., l)
+    ax = np.linspace(-(l - 1) / 2.0, (l - 1) / 2.0, l)
     gauss = np.exp(-0.5 * np.square(ax) / np.square(sig))
     kernel = np.outer(gauss, gauss)
     return kernel / np.sum(kernel)
+
 
 def zero_pad(image, pad_height, pad_width):
     """
@@ -31,12 +33,12 @@ def zero_pad(image, pad_height, pad_width):
     H, W = image.shape[:2]
     if len(image.shape) == 2:
         # gray image
-        out = np.zeros((H+2*pad_height, W+2*pad_width))
-        out[pad_height: H+pad_height, pad_width: W+pad_width] = image
+        out = np.zeros((H + 2 * pad_height, W + 2 * pad_width))
+        out[pad_height : H + pad_height, pad_width : W + pad_width] = image
     else:
         # color image
-        out = np.zeros((H+2*pad_height, W+2*pad_width, 3))
-        out[pad_height: H+pad_height, pad_width: W+pad_width, :] = image
+        out = np.zeros((H + 2 * pad_height, W + 2 * pad_width, 3))
+        out[pad_height : H + pad_height, pad_width : W + pad_width, :] = image
 
     return out
 
@@ -59,18 +61,18 @@ def filter2d(image, filter):
     Hk, Wk = filter.shape
     out = np.zeros((Hi, Wi))
 
-    image = zero_pad(image, Hk//2, Wk//2)
+    image = zero_pad(image, Hk // 2, Wk // 2)
     for m in range(Hi):
         for n in range(Wi):
             ### YOUR CODE HERE (replace ??? with your code)
-            out[m, n] = ???
+            out[m, n] = np.sum(image[m : m + Hk, n : n + Wk] * filter)
             ### END YOUR CODE
 
     return out
 
 
 def partial_x(img):
-    """ Computes partial x-derivative of input img.
+    """Computes partial x-derivative of input img.
 
     Args:
         img: numpy array of shape (H, W)
@@ -88,8 +90,9 @@ def partial_x(img):
 
     return out
 
+
 def partial_y(img):
-    """ Computes partial y-derivative of input img.
+    """Computes partial y-derivative of input img.
 
     Args:
         img: numpy array of shape (H, W)
