@@ -82,11 +82,8 @@ def partial_x(img):
 
     out = None
 
-    ### YOUR CODE HERE
-
-    # define your derivative filter to be size 3*3
-
-    ### END YOUR CODE
+    filter = np.array([[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]])
+    out = filter2d(img, filter)
 
     return out
 
