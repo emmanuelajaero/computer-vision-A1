@@ -80,7 +80,7 @@ def partial_x(img):
 
     out = None
 
-    filter = np.array([[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]])
+    filter = np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]])
     out = filter2d(img, filter)
 
     return out
@@ -99,7 +99,7 @@ def partial_y(img):
 
     ### YOUR CODE HERE
     # define your derivative filter to be size 3*3
-    filter = np.array([[-1, -1, -1], [0, 0, 0], [1, 1, 1]])
+    filter = np.array([[-1, -2, -1], [0, 0, 0], [1, 2, 1]])
     out = filter2d(img, filter)
 
     ### END YOUR CODE
