@@ -54,12 +54,18 @@ def main():
     nms_figure = plt.figure("NMS")
     plt.imshow(img, cmap="gray")
     plt.scatter(nms[:, 1], nms[:, 0], marker="x")
+    plt.title("NMS")
+    plt.axis("off")
 
     threshold_figure = plt.figure("Threshold")
     plt.imshow(threshold, cmap="gray")
+    plt.title("Threshold")
+    plt.axis("off")
 
     response_figure = plt.figure("Response")
     plt.imshow(response, cmap="gray")
+    plt.title("Response")
+    plt.axis("off")
 
     plt.show()
 
